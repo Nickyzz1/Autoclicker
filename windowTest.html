@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Dropdown Simulado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    .container {
+      position: relative;
+      width: 300px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      border: 1px solid #ccc;
+      background: #fff;
+      z-index: 10;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .dropdown div {
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .dropdown div:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Teste cliques</h2>
+
+  <div class="container">
+    <input type="text" id="inputBox" readonly placeholder="Clique para abrir...">
+    <div class="dropdown" id="dropdownBox">
+     
+      <div>Opção 1</div>
+      <div>Opção 2</div>
+      <div>Opção 3</div>
+      <div>Opção 4</div>
+      <div>Opção 5</div>
+      <div>Opção 6</div>
+      <div>Opção 7</div>
+      <div>Opção 8</div>
+      <div>Opção 9</div>
+      <div>Opção 10</div>
+      <div>Opção 11</div>
+      <div>Opção 12</div>
+      <div>Opção 13</div>
+      <div>Opção 14</div>
+      <div>Opção 15</div>
+      <div>Opção 16</div>
+      <div>Opção 17</div>
+      <div>Opção 18</div>
+      <div>Opção 19</div>
+      <div>Opção 20</div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("inputBox");
+    const dropdown = document.getElementById("dropdownBox");
+
+    input.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    });
+
+    dropdown.querySelectorAll("div").forEach(opcao => {
+      opcao.addEventListener("click", () => {
+        input.value = opcao.textContent;
+        dropdown.style.display = "none";
+      });
+    });
+
+    // fecha dropdown se clicar fora
+    document.addEventListener("click", (e) => {
+      if (!document.querySelector(".container").contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
